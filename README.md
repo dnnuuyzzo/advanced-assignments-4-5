@@ -51,6 +51,3 @@ advanced-assignments-4-5/
 
 ## Deployment
 This app is designed to be deployed on **Streamlit Community Cloud**.
-
----
-Created for Weekly Class GDGoC AI/ML Advanced Session Assignments.
