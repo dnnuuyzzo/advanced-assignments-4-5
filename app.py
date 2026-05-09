@@ -2,23 +2,20 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# Load the model
 @st.cache_resource
 def load_model():
     return joblib.load('model.joblib')
 
 model = load_model()
 
-# Title and description
 st.set_page_config(page_title="Titanic Survival Predictor", layout="centered")
 
-# Display logo if it exists
 try:
     st.image("assets/logo.png", width=150)
 except:
     pass
 
-st.title("🚢 Titanic Survival Predictor")
+st.title("Titanic Survival Predictor")
 st.markdown("""
 This app predicts whether a passenger would have survived the Titanic disaster based on their details.
 """)
@@ -47,25 +44,19 @@ def user_input_features():
 
 df_input = user_input_features()
 
-# Display inputs
 st.subheader("Passenger Information Summary")
 st.write(df_input)
 
-# Prediction
 if st.button("Predict Survival"):
     prediction = model.predict(df_input)
     prediction_proba = model.predict_proba(df_input)
     
     st.subheader("Prediction Result")
     if prediction[0] == 1:
-        st.success("✅ This passenger would likely have **SURVIVED**.")
+        st.success("This passenger would likely have **SURVIVED**.")
     else:
-        st.error("❌ This passenger would likely **NOT HAVE SURVIVED**.")
+        st.error("This passenger would likely **NOT HAVE SURVIVED**.")
         
     st.subheader("Prediction Probability")
     st.write(f"Survival Probability: {prediction_proba[0][1]:.2%}")
     st.write(f"Fatality Probability: {prediction_proba[0][0]:.2%}")
-
-# Footer
-st.markdown("---")
-st.markdown("Created for Weekly Class GDGoC Assignments.")
