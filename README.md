@@ -26,7 +26,7 @@ advanced-assignments-4-5/
 
 1. **Clone the repository**:
    ```bash
-   git clone <your-repository-url>
+   git clone https://github.com/dnnuuyzzo/advanced-assignments-4-5.git
    cd advanced-assignments-4-5
    ```
 
